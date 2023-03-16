@@ -1,0 +1,4 @@
+venv
+tmp.db
+nohup.out
+__pycache__
