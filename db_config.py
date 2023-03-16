@@ -1,5 +1,5 @@
-db_name = 'colors'
-host = 'TODO'
+db_name = 'favoritecolor$colors'
+host = 'favoritecolor.mysql.pythonanywhere-services.com'
 port = 3306
-user = 'clara'
-password = 'color123'
+user = 'favoritecolor'
+password = 'colors1234'

@@ -2,15 +2,15 @@ from peewee import *
 import db_config
 import schema
 
-# db = MySQLDatabase(
-#     db_config.db_name,
-#     host = db_config.host,
-#     port = db_config.port,
-#     user = db_config.user,
-#     password = db_config.password )
+db = MySQLDatabase(
+    db_config.db_name,
+    host = db_config.host,
+    port = db_config.port,
+    user = db_config.user,
+    password = db_config.password )
 
 
-db = SqliteDatabase('tmp.db')
+# db = SqliteDatabase('tmp.db')
 
 class Color(Model):
     name = CharField()
