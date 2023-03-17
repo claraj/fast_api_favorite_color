@@ -1,26 +1,38 @@
 from typing import List 
 
-from fastapi import FastAPI 
-
+from fastapi import FastAPI, APIRouter
 
 import db, schema
 
+# flask_app = Flask(__name__)
+
+# @flask_app.route('/')
+# def homepage():
+#     return 'This is the home page. Nothing here, really.'
+
 app = FastAPI() 
 
+router = APIRouter()
 
-@app.get('/colors', response_model=List[schema.Color])
+
+@router.get('/colors', response_model=List[schema.Color])
 def get_all():
     return db.get_all_colors()
 
 
-@app.post('/colors', response_model=schema.Color)
+@router.post('/colors', response_model=schema.Color)
 def add_new_color(color: schema.ColorCreate):
     return db.add_color(color)
     
 
-@app.delete('/admin_color_delete')
+@router.delete('/admin_color_delete', status_code=200)
 def delete_all():
-    pass
+    db.delete_all_colors()
+    return {'success': 'Deleted all favorite colors'}
+
+
+app.include_router(router, prefix='/api', tags=['colors'])
+
 
 # # https://docs.python.org/3/library/typing.html#typing.Union
 # @app.get('/colors/{color_id}')
